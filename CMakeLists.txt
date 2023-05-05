@@ -17,6 +17,11 @@ target_link_libraries( ${PROJECT_NAME} pthread ${OpenCV_LIBS})
 target_include_directories(${PROJECT_NAME} PRIVATE  ${OpenCV_INCLUDE_DIRS})
 target_compile_options(${PROJECT_NAME} PRIVATE "-std=c++2a" "-Wall" "-O2" "-g" "-fno-strict-aliasing" "-Wfatal-errors" "-Wno-reorder")
 
+add_executable(${PROJECT_NAME}_ximg ximgprocsgm.cpp)
+target_link_libraries( ${PROJECT_NAME}_ximg pthread ${OpenCV_LIBS})
+target_include_directories(${PROJECT_NAME}_ximg PRIVATE  ${OpenCV_INCLUDE_DIRS})
+target_compile_options(${PROJECT_NAME}_ximg PRIVATE "-std=c++2a" "-Wall" "-O2" "-g" "-fno-strict-aliasing" "-Wfatal-errors" "-Wno-reorder")
+
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
 
 set(CMAKE_INSTALL_PREFIX "/usr")
