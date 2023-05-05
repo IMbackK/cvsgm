@@ -355,7 +355,7 @@ static void bwareaopen(Mat const & input, Mat & output)
 {
     // Find all contours
     Contours contours;
-    findContours(input.clone(), contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE);
+    findContours(input.clone(), contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
     
     for (int i = 0; i < contours.size(); i++)
     {
@@ -403,7 +403,7 @@ static void convertion(Mat const & input, Mat & output)
 int main(int argc, const char * argv[])
 {
     // Load the image in grayscale mode
-    Mat input = imread(argv[1],CV_LOAD_IMAGE_GRAYSCALE);
+    Mat input = imread(argv[1], cv::ImreadModes::IMREAD_GRAYSCALE);
     displayImage("Image", input);
     
     //Padd image
@@ -424,7 +424,7 @@ int main(int argc, const char * argv[])
     convertion(entropyMat, convertedEntropyMat);
 
     //Threshold textures
-    threshold(convertedEntropyMat, convertedEntropyMat, TEXTURE_EDGE_THRESHOLD, 255/*1*/, CV_THRESH_BINARY);
+    threshold(convertedEntropyMat, convertedEntropyMat, TEXTURE_EDGE_THRESHOLD, 255/*1*/, cv::THRESH_BINARY);
     displayImage("Threshold Normalized entropy", convertedEntropyMat);
     
     //Filter areas
